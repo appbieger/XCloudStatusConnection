@@ -24,7 +24,7 @@ public enum XTreeClassENUM : String, Identifiable {
     case ALL                        = "com.appbieger.xc"
     case UNKNOWN                    = ""
     
-    var accountIDs: [XTreeClassENUM] {
+    public var accountIDs: [XTreeClassENUM] {
         [   .ACCOUNT_GITHUB_TOKEN,
             .ACCOUNT_APPLE,
             .ACCOUNT_TREVISCI,
@@ -38,7 +38,7 @@ public enum XTreeClassENUM : String, Identifiable {
         ]
     }
     
-    static var accountIDsAddable: [XTreeClassENUM] {
+    public  static var accountIDsAddable: [XTreeClassENUM] {
         [   .ACCOUNT_GITHUB_TOKEN,
             .ACCOUNT_GITLAB,
             .ACCOUNT_APPLE,
@@ -52,11 +52,11 @@ public enum XTreeClassENUM : String, Identifiable {
     }
     
     
-    var hasSecoundConnectionType: Bool {
+    public var hasSecoundConnectionType: Bool {
         !secoundConnection.isEmpty
     }
     
-    var secoundConnection : [XTreeClassENUM] {
+    public var secoundConnection : [XTreeClassENUM] {
         switch self {
             
         case .ACCOUNT_GITHUB_TOKEN:      return [.ACCOUNT_GITHUB_TOKEN, .ACCOUNT_GITHUB_OAUTH ]
@@ -68,7 +68,7 @@ public enum XTreeClassENUM : String, Identifiable {
     
      
     
-    var accountCreateTokenURL : URL? {
+    public  var accountCreateTokenURL : URL? {
         switch self {
         case .ACCOUNT_GITHUB_TOKEN:   return URL(string: "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token")
         case .ACCOUNT_APPLE:    return URL(string: "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token")
@@ -79,11 +79,11 @@ public enum XTreeClassENUM : String, Identifiable {
         }
     }
     
-    var accountCreateTokenURLVisible : Bool{
+    public var accountCreateTokenURLVisible : Bool{
         accountCreateTokenURL != nil
     }
     
-    var accountCreateTokenURLButtonLabel : String? {
+    public  var accountCreateTokenURLButtonLabel : String? {
         switch self {
         case .ACCOUNT_GITHUB_TOKEN:    return  "Create a Token on GitHub"
         case .ACCOUNT_APPLE:     return  "Create a Token on Xcode Cloud"
@@ -94,7 +94,7 @@ public enum XTreeClassENUM : String, Identifiable {
         }
     }
     
-    var fetchableTypes: [XTreeClassENUM] {
+    public var fetchableTypes: [XTreeClassENUM] {
         [   .ACCOUNT_GITHUB_TOKEN,
             .ACCOUNT_APPLE,
             .ACCOUNT_TREVISCI,
@@ -113,15 +113,15 @@ public enum XTreeClassENUM : String, Identifiable {
     
 
     
-    func isFetchable() -> Bool {
+    public func isFetchable() -> Bool {
         !fetchableTypes.filter{$0 == self}.isEmpty
     }
     
-    func isAcc() -> Bool {
+    public func isAcc() -> Bool {
         !accountIDs.filter{$0 == self}.isEmpty
     }
     
-    var name: String {
+   public  var name: String {
         switch self {
         case .ACCOUNT:                   return "App"
         case .WORFKLOW:                  return "Workflow"
@@ -147,7 +147,7 @@ public enum XTreeClassENUM : String, Identifiable {
         
     }
     
-    var authName: String {
+    public var authName: String {
         switch self {
         case .ACCOUNT_GITHUB_TOKEN:                   return "Personal Access Token"
         case .ACCOUNT_GITHUB_OAUTH:                   return "OAuth Access Token"
